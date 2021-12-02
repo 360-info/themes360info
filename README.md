@@ -29,6 +29,7 @@ p1 <- ggplot(mtcars) +
 ggsave("test1.png", p1)
 ```
 
+![test1](https://user-images.githubusercontent.com/6520659/143531686-ca66dbf7-2d24-46b8-9b86-23d9863ffbdc.png)
 
 ```r
 # not working yet!
