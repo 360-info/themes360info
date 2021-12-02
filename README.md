@@ -29,6 +29,7 @@ p1 <- ggplot(mtcars) +
 ggsave("test1.png", p1)
 ```
 
+
 ```r
 # not working yet!
 p2 <- p1 +

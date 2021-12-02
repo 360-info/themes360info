@@ -48,3 +48,24 @@ register_360fonts <- function() {
     weight = c("normal", "bold"))
 
 }
+
+#' Returns a CSS `@import` declaration for the 360 fonts. Used by `save_svg` so
+#' that people viewing SVG plots on the web can see 360info fonts without
+#' having them installed.
+#'
+#' @importFrom svglite font_face
+fontfaces_360fonts <- function() {
+
+  list(
+    font_face(
+      "Libre Franklin",
+      woff = "https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,400;0,700;0,900;1,400&display=swap",
+      ttf = "LibreFranklin-Regular.ttf",
+      local = "Libre Franklin",
+      weight = "normal", style = "normal")
+    # normal italic here
+    # bold here
+    # heavy here
+  )
+  
+}
