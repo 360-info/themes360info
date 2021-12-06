@@ -17,6 +17,7 @@ Imports:
     dplyr,
     ggplot2,
     magrittr,
+    ragg,
     rlang,
     svglite,
     systemfonts

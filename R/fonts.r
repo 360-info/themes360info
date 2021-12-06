@@ -11,7 +11,7 @@
 #'   package.
 #' @importFrom rlang abort inform warn
 #' @importFrom dplyr arrange filter slice
-#' @importFrom cli cli::format_error cli::format_message cli::format_warning
+#' @importFrom cli format_error format_message format_warning
 #' @importFrom systemfonts clear_registry register_variant system_fonts
 #' @export
 register_360fonts <- function(
