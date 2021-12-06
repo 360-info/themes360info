@@ -7,7 +7,7 @@
 #'   `ggplot2::geom_label`.
 #' @importFrom rlang warn
 #' @importFrom cli format_warning
-#' @param base_size Base font size, given in pts.
+#' @importFrom ggplot2 unit geom_label
 #' @export
 textbox_360info <- function(
   box_style = c("light", "dark", "blue", "glass_light", "glass_dark"),
@@ -35,7 +35,7 @@ textbox_360info <- function(
   } else {
 
     # throw a warning (once) if ggtext isn't installed...
-    rlang::warn(
+    warn(
       format_warning(c(
         "i" = paste(
           "The {.pkg ggtext} package isn't installed. This means that textbox",
@@ -47,7 +47,7 @@ textbox_360info <- function(
       .frequency = "once", .frequency_id = "ggtext_unavailable")
     
     # ... then proceed with a regular textbox
-    ggplot2::geom_label(
+    geom_label(
       fill = selected_style$fill, colour = selected_style$colour,
       family = "Body 360info",
       size = 5,

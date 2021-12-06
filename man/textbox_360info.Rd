@@ -16,8 +16,6 @@ the fill and text colour of the box. One of "light", "dark", "blue",
 
 \item{...}{Other arguments passed on to \code{ggtext::geom_textbox} or
 \code{ggplot2::geom_label}.}
-
-\item{base_size}{Base font size, given in pts.}
 }
 \description{
 Add a 360info-themed textbox to the plot.

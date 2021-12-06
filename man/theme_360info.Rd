@@ -7,6 +7,8 @@
 theme_360info(base_family = "Body 360info", base_size = 14)
 }
 \arguments{
+\item{base_family}{Name of the font family to use by default.}
+
 \item{base_size}{Base font size, given in pts.}
 }
 \description{

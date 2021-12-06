@@ -12,6 +12,7 @@
 #' @param ... Other arguments passed on to `svglite::svglite`.
 #' @return The original plot, invisibly (so you can use it in pipes)
 #' @importFrom svglite svglite
+#' @importFrom grDevices dev.off
 #' @export
 save_svg <- function(plot, filename, height_factor = 1, scaling = 1.4, ...) {
 

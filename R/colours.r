@@ -9,4 +9,4 @@ pal_360 <- c(
   "teal" = "#47bfaf",
   "green" = "#96ca4f",
   "lightgrey" = "#e1e4e6",
-  "grey" = "6b767f")
+  "grey" = "#6b767f")

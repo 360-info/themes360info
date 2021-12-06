@@ -1,6 +1,9 @@
 #' Add 360info theming to a ggplot.
 #'
+#' @param base_family Name of the font family to use by default.
 #' @param base_size Base font size, given in pts.
+#' @importFrom ggplot2 element_text element_rect margin theme_minimal rel theme
+#'   unit
 #' @export
 theme_360info <- function(base_family = "Body 360info", base_size = 14) {
   theme_minimal(base_family = base_family, base_size = base_size) +
