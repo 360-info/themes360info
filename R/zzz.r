@@ -12,9 +12,8 @@
   if(any(toset)) options(op.themes360info[toset])
   
   # register fonts on package load (it can be called manually to re-register!)
-  if(getOptions("themes360info.franklin") != "none") {
+  font_choice <- getOption("themes360info.franklin")
+  if ((!is.null(font_choice)) && font_choice != "none") {
     register_360fonts()
-  } else {
-    
   }
 }
