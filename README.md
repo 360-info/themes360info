@@ -56,7 +56,7 @@ register_360fonts("libre", TRUE)
 #> NULL
 
 test_path <- knitr::fig_path(".png")
-agg_png(test_path, width = 1200, height = 600, units = "px", res = 120)
+agg_png(test_path, width = 1200, height = 1200, units = "px", res = 150)
 
 ggplot(mtcars) +
   aes(hp, disp) +
