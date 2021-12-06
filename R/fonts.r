@@ -30,7 +30,8 @@ register_360fonts <- function(
     "Specify a different font to use with 360info themes by calling",
     "{.pkg register_360fonts()} or by setting",
     "{.pkg options(\"themes360info.franklin\")} to either",
-    "{.pkg \"itc\"} or {.pkg \"libre\"}.")
+    "{.pkg \"itc\"} or {.pkg \"libre\"} (or {.pkg \"none\"} to disable",
+    "automatic font loading).")
   no_fonts_found <- paste(
     "Neither ITC Franklin Gothic nor Libre Franklin was found. 360info themes",
     "may fall back to other fonts or not render properly at all."
@@ -86,6 +87,7 @@ register_360fonts <- function(
   }
 
   # locate preferred weights as precisely as we can
+  # TODO - eliminate pipes here (they mess up package docs in .onLoad)
   headline <-
     family %>%
     dplyr::filter(!italic) %>%
