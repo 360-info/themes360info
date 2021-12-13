@@ -118,16 +118,19 @@ register_360fonts <- function(
     family = body$family,
     weight = c(body$weight, subhead$weight))
 
+  # TODO - switch font face declaration state?
+
   return()
 
 }
 
-#' Returns a CSS `@import` declaration for the 360 fonts. Used by `save_svg` so
-#' that people viewing SVG plots on the web can see 360info fonts without
-#' having them installed.
+#' Returns a CSS `@import` declaration for the 360 fonts. Used by `save_plot`
+#' when saving SVG files so that other users viewing them on the web can see
+#' 360info fonts without having them installed.
 #'
 #' @importFrom svglite font_face
 fontfaces_360fonts <- function() {
+  # TODO - libre vs itc?
   list(
     font_face(
       "Libre Franklin",

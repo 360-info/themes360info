@@ -37,14 +37,14 @@ plots:
     elements. It has normal and bold variants; use the latter for
     emphasis in labels and important but small textual plot elements.
 
-`theme_360info()` already uses these fonts by default (unless you supply
-a different `base_family` or override specific theme elements), but if
-you add text-based labels or annotations outside the theme system (eg.
-using `geom_label`), you’ll need to supply one of these font families:
+`theme_360()` already uses these fonts by default (unless you supply a
+different `base_family` or override specific theme elements), but if you
+add text-based labels or annotations outside the theme system (eg. using
+`geom_label`), you’ll need to supply one of these font families:
 
 ``` r
 library(ggplot2)
-library(ragg)
+# library(ragg)
 library(themes360info)
 
 # use this to temporarily switch to either itc franklin gothic or libre franklin
@@ -57,33 +57,206 @@ register_360fonts("libre", TRUE)
 
 # test_path <- knitr::fig_path(".png")
 test_path <- tempfile(fileext = ".png")
-agg_png(test_path, width = 1200, height = 1200, units = "px", res = 150)
+# agg_png(test_path, width = 1200, height = 1200, units = "px", res = 150)
 
-ggplot(mtcars) +
-  aes(hp, disp) +
-  geom_point() +
-  # this text annotation uses the regular weight body font
-  geom_text(
-    aes(Inf, Inf, label = "Regular annotation here!"),
-    hjust = "inward", vjust = "inward",
-    family = "Body 360info") +
-  # this text annotation uses the bold weight body font
-  geom_text(
-    aes(Inf, -Inf, label = "BOLD annotation here!"),
-    hjust = "inward", vjust = "inward",
-    family = "Body 360info", fontface = "bold") +
-  labs(title = "FANCY FONTS", subtitle = "ENHANCE THE APPEARANCE OF PLOTS") +
-  # this adds our fonts, colours and other preferences to the rest of the plot
-  theme_360info()
+myplot <- 
+  {
+    ggplot(mtcars) +
+    aes(hp, disp) +
+    geom_point() +
+    # this text annotation uses the regular weight body font
+    annotate("text",
+      x = Inf, y = Inf, label = "Regular annotation here!",
+      hjust = "inward", vjust = "inward",
+      family = "Body 360info") +
+    # this text annotation uses the bold weight body font
+    annotate("text",
+      x = Inf, y = -Inf, label = "BOLD annotation here!",
+      hjust = "inward", vjust = "inward",
+      family = "Body 360info", fontface = "bold") +
+    labs(title = "FANCY FONTS", subtitle = "ENHANCE THE APPEARANCE OF PLOTS") +
+    # this adds our fonts, colours and other preferences to the rest of the plot
+    theme_360(base_size = 20)
+  } %>%
+  save_360plot(test_path, shape = "square", retina = 2) 
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
 
-invisible(dev.off())
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
 
-ggsave(test_path, width = 1200, height = 1200, units = "px", dpi = 300, scale = 2) 
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Body 360info"
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Headline 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Headline 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Headline 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Headline 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Headline 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Headline 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Headline 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Headline 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Headline 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Headline 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Headline 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Headline 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Headline 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Headline 360info"
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Subhead 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Subhead 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Subhead 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Subhead 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Subhead 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Subhead 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Subhead 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Subhead 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Subhead 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Subhead 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Subhead 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Subhead 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Subhead 360info"
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
+#> be found for family "Subhead 360info"
+print(test_path)
+#> [1] "/var/folders/qm/8080b6h93kj2y5fjqk030gkmyj0101/T//RtmpyVsmIZ/file10f8b48d52ca9.png"
+# invisible(dev.off())
+
+# ggsave(test_path, width = 1200, height = 1200, units = "px", dpi = 300, scale = 2)
+# shape = c("square", "phone-landscape", "phone-portrait", "photo-landcape",
+#   "photo-portrait", "sdtv-landscape", "sdtv-portrait") 
+
 
 knitr::include_graphics(test_path)
 ```
 
-<img src="/var/folders/qm/8080b6h93kj2y5fjqk030gkmyj0101/T//RtmpuqcC5k/filedf9838ab026d.png" width="100%" />
+<img src="/var/folders/qm/8080b6h93kj2y5fjqk030gkmyj0101/T//RtmpyVsmIZ/file10f8b48d52ca9.png" width="100%" />
 
 ### Choosing a preferred font
 
@@ -109,7 +282,7 @@ text formatting with `ggtext`:
 ``` r
 # not working yet!
 # p2 <- p1 +
-#   textbox_360info("blue",
+#   textbox_360("blue",
 #     x = Inf, y = Inf, hjust = "inward", vjust = "inward", halign = 1,
 #     label = "**THIS IS A PATTERN**<br>As one measure gets bigger, the other gets smaller."
 #   )

@@ -33,7 +33,7 @@ library(themes360info)
 
 ## 360info graphics essentials
 
-* `theme_360info`
+* `theme_360`
 * Fonts in geoms
 * Adding a logo and saving to disk
   - Sizing plots

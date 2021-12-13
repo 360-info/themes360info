@@ -16,10 +16,12 @@
 #' @return The original plot, invisibly (so you can use it in pipes)
 #' @importFrom svglite svglite
 #' @importFrom ggplot2 ggsave
+#' @importFrom png readPNG
+#' @importFrom grid gList rasterGrob
 #' @importFrom tools file_ext
 #' @importFrom methods hasArg
 #' @export
-save_360infoplot <- function(plot, filename,
+save_360plot <- function(plot_object, filename,
   shape = c("square", "phone-landscape", "phone-portrait", "photo-landcape",
     "photo-portrait", "sdtv-landscape", "sdtv-portrait"),
   retina = 1,
@@ -40,14 +42,13 @@ save_360infoplot <- function(plot, filename,
   # TODO - it would be preferable to insert this into the gtable opposite the
   # caption (so that their tops are always aligned!)
   logo_360 <-
-    here("360-logo.png") %>%
-    readPNG() %>%
+    readPNG("360-logo.png") %>%
     rasterGrob(0.97, 0.03, just = c("right", "bottom"),
       height = unit(1, "cm"),
       interpolate = TRUE)
 
   # composite the plot and logo
-  plot_element_list <- gList(ggplotGrob(gsod_aus_barchart), logo_360)
+  plot_element_list <- gList(ggplotGrob(plot_object), logo_360)
 
   # compile ggsave fn args
   # TODO - what if width/height/dpi/scale are overwritten?
@@ -56,20 +57,19 @@ save_360infoplot <- function(plot, filename,
     plot = plot_element_list,
     # designed for a width = 600px image with appropriate text sizing for
     # theme_360info() at default base_size
-    width = 6 * retina,
-    height = width * height_ratio,
+    width = 6,
+    height = 6 * height_ratio,
     dpi = 66.6667 * retina,
     scale = 1.5)
 
   # (add web fonts to args if we're doing svg)
-  is_svg <- (hasArg(device) && device == svglite) || file_ext(filename) == "svg"
-  save_args <- c(save_args, list(web_fonts = fontfaces_360fonts())[is_svg])
-  
+  # if ((hasArg(device) && device == svglite) || file_ext(filename) == "svg") {
+  #   save_args$web_fonts <- fontfaces_360fonts()
+  # }
+
   # write out
   do.call(ggsave, save_args)
 
   # return the plot invisibly (for piping)
-  invisible(plot)
+  invisible(plot_object)
 }
-
-# TODO - save_png

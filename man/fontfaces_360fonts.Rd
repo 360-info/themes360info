@@ -2,14 +2,14 @@
 % Please edit documentation in R/fonts.r
 \name{fontfaces_360fonts}
 \alias{fontfaces_360fonts}
-\title{Returns a CSS \verb{@import} declaration for the 360 fonts. Used by \code{save_svg} so
-that people viewing SVG plots on the web can see 360info fonts without
-having them installed.}
+\title{Returns a CSS \verb{@import} declaration for the 360 fonts. Used by \code{save_plot}
+when saving SVG files so that other users viewing them on the web can see
+360info fonts without having them installed.}
 \usage{
 fontfaces_360fonts()
 }
 \description{
-Returns a CSS \verb{@import} declaration for the 360 fonts. Used by \code{save_svg} so
-that people viewing SVG plots on the web can see 360info fonts without
-having them installed.
+Returns a CSS \verb{@import} declaration for the 360 fonts. Used by \code{save_plot}
+when saving SVG files so that other users viewing them on the web can see
+360info fonts without having them installed.
 }

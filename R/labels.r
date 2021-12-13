@@ -9,7 +9,7 @@
 #' @importFrom cli format_warning
 #' @importFrom ggplot2 unit geom_label
 #' @export
-textbox_360info <- function(
+geom_label360 <- function(
   box_style = c("light", "dark", "blue", "glass_light", "glass_dark"),
   ...) {
 
@@ -59,3 +59,5 @@ textbox_360info <- function(
 
   
 }
+
+# TODO - annotate_360, using geom = `ggtext:geom_textbox`?
