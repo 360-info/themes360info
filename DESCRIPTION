@@ -22,4 +22,5 @@ Imports:
     svglite,
     systemfonts
 Suggests:
-  ggtext
+    rmarkdown,
+    ggtext

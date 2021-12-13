@@ -1,0 +1,42 @@
+---
+title: "Making graphics in the 360info style"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Who's this guide for?
+
+This guide is intended for 360info staff who're either:
+
+1. Data or Multimedia staff who need to make common kinds of graphics quickly; or
+2. Editors who are learning to make graphics themselves and who are also 
+
+::: {.alert .alert-warning}
+**This guide presumes some knowledge!**
+
+If you haven't used R before, I recommend starting your journey with the amazing [RYouWithMe](https://rladiessydney.org/courses/ryouwithme), written by Jen Richmond and Danielle Navarro.
+
+It's designed for students and researchers with no experience of data science and takes you through the process of bringing a simple dataset into R, asking and answering some questions, and making some graphics with `ggplot2`, the graphics system we'll be using.
+
+You should be ready to jump into this vignette once you've run throug that, but if you're still looking to get better with R, try [R for Data Science](https://r4ds.had.co.nz). It's a much more thorough introduction to R, but it's still designed with beginners in mind!
+:::
+
+
+```{r setup}
+library(themes360info)
+```
+
+## 360info graphics essentials
+
+* `theme_360info`
+* Fonts in geoms
+* Adding a logo and saving to disk
+  - Sizing plots
+  - Formats: PNG, SVG
+
+## 

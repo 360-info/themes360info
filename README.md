@@ -50,12 +50,13 @@ library(themes360info)
 # use this to temporarily switch to either itc franklin gothic or libre franklin
 register_360fonts("libre", TRUE)
 #> ✔ Using preferred font, Libre Franklin.
-#> ℹ Specify a different font to use with 360info themes by calling
-#>   register_360fonts() or by setting options("themes360info.franklin") to either
-#>   "itc" or "libre" (or "none" to disable automatic font loading).
+#> ℹ Specify a different font to use with 360info themes by calling register_360fonts() or by
+#>   setting options("themes360info.franklin") to either "itc" or "libre" (or "none" to disable
+#>   automatic font loading).
 #> NULL
 
-test_path <- knitr::fig_path(".png")
+# test_path <- knitr::fig_path(".png")
+test_path <- tempfile(fileext = ".png")
 agg_png(test_path, width = 1200, height = 1200, units = "px", res = 150)
 
 ggplot(mtcars) +
@@ -76,10 +77,13 @@ ggplot(mtcars) +
   theme_360info()
 
 invisible(dev.off())
+
+ggsave(test_path, width = 1200, height = 1200, units = "px", dpi = 300, scale = 2) 
+
 knitr::include_graphics(test_path)
 ```
 
-<img src="man/figures/README-fontdemo-1.png" width="100%" />
+<img src="/var/folders/qm/8080b6h93kj2y5fjqk030gkmyj0101/T//RtmpuqcC5k/filedf9838ab026d.png" width="100%" />
 
 ### Choosing a preferred font
 
