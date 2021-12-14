@@ -71,19 +71,29 @@ replace_caption <- function(p, caption) {
 #'
 #' @importFrom png readPNG
 #' @importFrom grid rasterGrob
+#' @importFrom rlang inform
+#' @importFrom cli format_message
+#' @importFrom scales percent
 #' @param width The base physical plot width, as a `ggplot2::unit`
 #' @param footer_prop The proportio nof the plot's height that will be taken
 #'   up the footer.
 #' @param retina A multiplier for raster resolutions. Keeps relative text and
 #'   shape sizing intact.
 #' @return A sized and positioned `grid::rasterGrob` object displaying the logo
-get_360logo <- function(width) {
+get_360logo <- function(width, footer_prop_square) {
   logo <- system.file("extdata", "360-logo.png", package = "themes360info")
+
+  inform(format_message(c(
+    "Logo diagnostic messages:",
+    "i" = paste("Logo proportion of square: ", footer_prop_square),
+    "i" = paste("Square width: ", width),
+    "i" = paste("Logo height: ", width * footer_prop_square))))
 
   grid::rasterGrob(
     png::readPNG(logo),
     1, 1, just = c("right", "top"),
-    height = width * 0.075,
+    # height = width * 0.075,
+    height = width * footer_prop_square,
     interpolate = TRUE)
 }
 
@@ -111,6 +121,9 @@ get_360logo <- function(width) {
 #' @importFrom patchwork wrap_elements wrap_plots
 #' @importFrom svglite svglite
 #' @importFrom tools file_ext
+#' @importFrom rlang inform
+#' @importFrom cli format_message
+#' @importFrom scales percent
 #' @export
 save_360plot <- function(plot_object, filename,
   shape = c("square", "phone-landscape", "phone-portrait", "photo-landcape",
@@ -136,12 +149,15 @@ save_360plot <- function(plot_object, filename,
 
   # calculate the footer height
   # (footer is designed to be fixed for a given width)
-  footer_prop_square <- 1 / 6
+  # NOTE - this proportion clearly isn't scaling properly. i've made it
+  # conservative to ensure the footer is always visible, but on taller graphics
+  # it leads to white space below the footer
+  footer_prop_square <- 1 / 8
   footer_prop <- footer_prop_square / height_ratio
   panel_prop <- 1 - footer_prop - 0.001
   
   # get the logo (define height to scale alongside plot width)
-  logo_360 <- get_360logo(width)
+  logo_360 <- get_360logo(width, footer_prop_square)
 
   # remove the existing plot (or patchwork) caption
   # TODO - removing existing caption isn't working!
@@ -172,18 +188,21 @@ save_360plot <- function(plot_object, filename,
   #   gp = gpar(col = themes360info::pal_360[["grey"]], lwd = 2))
   grey_line <- grid.lines(y = c(0.5, 0.5), draw = FALSE,
     gp = gpar(col = "grey", lwd = 2))
+  
+  inform(format_message(c(
+    "Footer sizing diagnostic messages:",
+    "i" = paste("Footer proportion of square: ", percent(footer_prop_square)),
+    "i" = paste("Height ratio: ", percent(height_ratio)),
+    "i" = paste("Footer proportion: ", percent(footer_prop)),
+    "i" = paste("Footer height (?): ", footer_prop * width))))
 
-  # composite the plot and logo
-  # patch <-
-  #   (modified_plot / grey_line / footer_panel) +
-
+  # composite the plot, line and footer
   patch <- wrap_plots(
     modified_plot,
     wrap_elements(plot = grey_line),
     wrap_elements(plot = footer_panel),
     ncol = 1,
     heights = c(panel_prop, 0.001, footer_prop))
-    # TODO - this footer height isn't quite scaling correctly with shape
 
   # compile ggsave fn args
   # TODO - what if width/height/dpi/scale are overwritten?

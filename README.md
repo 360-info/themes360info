@@ -47,16 +47,7 @@ library(ggplot2)
 library(themes360info)
 
 # use this to temporarily switch to either itc franklin gothic or libre franklin
-register_360fonts("libre", TRUE)
-#> ✔ Using preferred font, Libre Franklin.
-#> ℹ Specify a different font to use with 360info themes by calling register_360fonts() or by
-#>   setting options("themes360info.franklin") to either "itc" or "libre" (or "none" to disable
-#>   automatic font loading).
-#> NULL
-
-# test_path <- knitr::fig_path(".png")
-test_path <- tempfile(fileext = ".png")
-# agg_png(test_path, width = 1200, height = 1200, units = "px", res = 150)
+# register_360fonts("libre", TRUE)
 
 myplot <- 
   {
@@ -79,13 +70,24 @@ myplot <-
       caption = "**SOURCE:** aha!<br>Another source here!") +
     # this adds our fonts, colours and other preferences to the rest of the plot
     theme_360()
-  } %>%
-  save_360plot(test_path, shape = "square")
+  }
 
+# save to a temporary file for knitr
+test_path <- knitr::fig_path(".png")
+save_360plot(myplot, test_path, shape = "square")
+#> Logo diagnostic messages:
+#> ℹ Logo proportion of square: 0.125
+#> ℹ Square width: 6inches
+#> ℹ Logo height: 0.75inches
+#> Footer sizing diagnostic messages:
+#> ℹ Footer proportion of square: 12%
+#> ℹ Height ratio: 100%
+#> ℹ Footer proportion: 12%
+#> ℹ Footer height (?): 0.75inches
 knitr::include_graphics(test_path)
 ```
 
-<img src="/var/folders/qm/8080b6h93kj2y5fjqk030gkmyj0101/T//RtmpM4f6jj/file4bd1398d42c9.png" width="100%" />
+<img src="man/figures/README-fontdemo-1.png" width="100%" />
 
 ### Choosing a preferred font
 

@@ -4,7 +4,7 @@
 \alias{get_360logo}
 \title{Get a sized and positioned rasterGrob of the 360info logo.}
 \usage{
-get_360logo(width)
+get_360logo(width, footer_prop_square)
 }
 \arguments{
 \item{width}{The base physical plot width, as a \code{ggplot2::unit}}

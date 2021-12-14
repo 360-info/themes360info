@@ -4,7 +4,7 @@
 \alias{theme_360}
 \title{Add 360info theming to a ggplot.}
 \usage{
-theme_360(base_family = "Body 360info", base_size = 18)
+theme_360(base_family = "Body 360info", base_size = 20)
 }
 \arguments{
 \item{base_family}{Name of the font family to use by default.}
