@@ -5,7 +5,7 @@
 #' @importFrom ggplot2 element_text element_rect margin theme_minimal rel theme
 #'   unit
 #' @export
-theme_360 <- function(base_family = "Body 360info", base_size = 14) {
+theme_360 <- function(base_family = "Body 360info", base_size = 20) {
   theme_minimal(base_family = base_family, base_size = base_size) +
   theme(
     # plot title
@@ -30,7 +30,7 @@ theme_360 <- function(base_family = "Body 360info", base_size = 14) {
     # legends
     legend.title = element_text(face = "bold"),
     # plot frame and background
-    plot.background = element_rect(fill = "white"),
-    plot.margin = unit(rep(1, 4), "cm")
+    plot.background = element_rect(fill = "white", colour = NA),
+    plot.margin = unit(rep(0, 4), "in")
   )
 }

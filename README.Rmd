@@ -41,7 +41,6 @@ remotes::install_github("360-info/themes360info")
 
 ```{r fontdemo}
 library(ggplot2)
-# library(ragg)
 library(themes360info)
 
 # use this to temporarily switch to either itc franklin gothic or libre franklin
@@ -66,18 +65,14 @@ myplot <-
       x = Inf, y = -Inf, label = "BOLD annotation here!",
       hjust = "inward", vjust = "inward",
       family = "Body 360info", fontface = "bold") +
-    labs(title = "FANCY FONTS", subtitle = "ENHANCE THE APPEARANCE OF PLOTS") +
+    labs(
+      title = "FANCY FONTS",
+      subtitle = "ENHANCE THE APPEARANCE OF PLOTS",
+      caption = "**SOURCE:** aha!<br>Another source here!") +
     # this adds our fonts, colours and other preferences to the rest of the plot
-    theme_360(base_size = 20)
+    theme_360()
   } %>%
-  save_360plot(test_path, shape = "square", retina = 2) 
-print(test_path)
-# invisible(dev.off())
-
-# ggsave(test_path, width = 1200, height = 1200, units = "px", dpi = 300, scale = 2)
-# shape = c("square", "phone-landscape", "phone-portrait", "photo-landcape",
-#   "photo-portrait", "sdtv-landscape", "sdtv-portrait") 
-
+  save_360plot(test_path, shape = "square")
 
 knitr::include_graphics(test_path)
 ```

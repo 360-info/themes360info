@@ -44,7 +44,6 @@ add text-based labels or annotations outside the theme system (eg. using
 
 ``` r
 library(ggplot2)
-# library(ragg)
 library(themes360info)
 
 # use this to temporarily switch to either itc franklin gothic or libre franklin
@@ -74,189 +73,19 @@ myplot <-
       x = Inf, y = -Inf, label = "BOLD annotation here!",
       hjust = "inward", vjust = "inward",
       family = "Body 360info", fontface = "bold") +
-    labs(title = "FANCY FONTS", subtitle = "ENHANCE THE APPEARANCE OF PLOTS") +
+    labs(
+      title = "FANCY FONTS",
+      subtitle = "ENHANCE THE APPEARANCE OF PLOTS",
+      caption = "**SOURCE:** aha!<br>Another source here!") +
     # this adds our fonts, colours and other preferences to the rest of the plot
-    theme_360(base_size = 20)
+    theme_360()
   } %>%
-  save_360plot(test_path, shape = "square", retina = 2) 
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Body 360info"
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Headline 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Headline 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Headline 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Headline 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Headline 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Headline 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Headline 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Headline 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Headline 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Headline 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Headline 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Headline 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Headline 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Headline 360info"
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Subhead 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Subhead 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Subhead 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Subhead 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Subhead 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Subhead 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Subhead 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Subhead 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Subhead 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Subhead 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Subhead 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Subhead 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Subhead 360info"
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-#> be found for family "Subhead 360info"
-print(test_path)
-#> [1] "/var/folders/qm/8080b6h93kj2y5fjqk030gkmyj0101/T//RtmpyVsmIZ/file10f8b48d52ca9.png"
-# invisible(dev.off())
-
-# ggsave(test_path, width = 1200, height = 1200, units = "px", dpi = 300, scale = 2)
-# shape = c("square", "phone-landscape", "phone-portrait", "photo-landcape",
-#   "photo-portrait", "sdtv-landscape", "sdtv-portrait") 
-
+  save_360plot(test_path, shape = "square")
 
 knitr::include_graphics(test_path)
 ```
 
-<img src="/var/folders/qm/8080b6h93kj2y5fjqk030gkmyj0101/T//RtmpyVsmIZ/file10f8b48d52ca9.png" width="100%" />
+<img src="/var/folders/qm/8080b6h93kj2y5fjqk030gkmyj0101/T//RtmpM4f6jj/file4bd1398d42c9.png" width="100%" />
 
 ### Choosing a preferred font
 

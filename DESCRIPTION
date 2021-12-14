@@ -16,11 +16,12 @@ Imports:
     cli,
     dplyr,
     ggplot2,
+    ggtext,
     magrittr,
+    patchwork,
     ragg,
     rlang,
     svglite,
     systemfonts
 Suggests:
-    rmarkdown,
-    ggtext
+    rmarkdown
