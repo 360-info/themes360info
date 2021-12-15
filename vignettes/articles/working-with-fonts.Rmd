@@ -1,11 +1,6 @@
 ---
 title: "Working with fonts"
 author: "James Goldie, 360info"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Working with fonts}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include = FALSE}
@@ -29,7 +24,6 @@ For example, here's a very simple ggplot in the default style:
 ```{r demoplotregular}
 library(ggplot2)
 library(themes360info)
-library(ragg)
 
 p1 <-
   ggplot(diamonds) +
