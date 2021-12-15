@@ -1,5 +1,6 @@
 ---
 title: "Making graphics in the 360info style"
+author: "James Goldie, 360info"
 ---
 
 ```{r, include = FALSE}

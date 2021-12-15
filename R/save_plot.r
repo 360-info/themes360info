@@ -83,17 +83,17 @@ replace_caption <- function(p, caption) {
 get_360logo <- function(width, footer_prop_square) {
   logo <- system.file("extdata", "360-logo.png", package = "themes360info")
 
-  inform(format_message(c(
-    "Logo diagnostic messages:",
-    "i" = paste("Logo proportion of square: ", footer_prop_square),
-    "i" = paste("Square width: ", width),
-    "i" = paste("Logo height: ", width * footer_prop_square))))
+  # inform(format_message(c(
+  #   "Logo diagnostic messages:",
+  #   "i" = paste("Logo proportion of square: ", footer_prop_square),
+  #   "i" = paste("Square width: ", width),
+  #   "i" = paste("Logo height: ", width * footer_prop_square))))
 
   grid::rasterGrob(
     png::readPNG(logo),
     1, 1, just = c("right", "top"),
     # height = width * 0.075,
-    height = width * footer_prop_square,
+    height = width * footer_prop_square * 0.6,
     interpolate = TRUE)
 }
 
@@ -128,12 +128,12 @@ get_360logo <- function(width, footer_prop_square) {
 save_360plot <- function(plot_object, filename,
   shape = c("square", "phone-landscape", "phone-portrait", "photo-landcape",
     "photo-portrait", "sdtv-landscape", "sdtv-portrait"),
-  retina = 1, ...) {
+  retina = 2, ...) {
 
   # starting properties
   # we work on the basis of 6" * 66.67 dpi * 1.5 scale = 600px
   width <- unit(6, "in")
-  dpi <- 66.6667
+  dpi <- 66.6667 * retina
   scale <- 1.5
   
   # calculate height_ratio
@@ -189,12 +189,12 @@ save_360plot <- function(plot_object, filename,
   grey_line <- grid.lines(y = c(0.5, 0.5), draw = FALSE,
     gp = gpar(col = "grey", lwd = 2))
   
-  inform(format_message(c(
-    "Footer sizing diagnostic messages:",
-    "i" = paste("Footer proportion of square: ", percent(footer_prop_square)),
-    "i" = paste("Height ratio: ", percent(height_ratio)),
-    "i" = paste("Footer proportion: ", percent(footer_prop)),
-    "i" = paste("Footer height (?): ", footer_prop * width))))
+  # inform(format_message(c(
+  #   "Footer sizing diagnostic messages:",
+  #   "i" = paste("Footer proportion of square: ", percent(footer_prop_square)),
+  #   "i" = paste("Height ratio: ", percent(height_ratio)),
+  #   "i" = paste("Footer proportion: ", percent(footer_prop)),
+  #   "i" = paste("Footer height (?): ", footer_prop * width))))
 
   # composite the plot, line and footer
   patch <- wrap_plots(
