@@ -17,77 +17,35 @@ knitr::opts_chunk$set(
 Helpers for creating graphics with ggplot2 that align with 360info style guides
 
 <!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
 # Installation
 
-First, [download the Libre Franklin fonts](https://fonts.google.com/specimen/Libre+Franklin) and install them.
+First, download and install either the [Libre Franklin fonts](https://fonts.google.com/specimen/Libre+Franklin) or the [ITC Franklin Gothic fonts](https://www.myfonts.com/fonts/itc/franklin-gothic/) and install them.
 
-Then install the development version with:
+Then install the package with:
 
 ```r
 remotes::install_github("360-info/themes360info")
 ```
 
-## Fonts
+## Use
 
-360info uses ITC Franklin Gothic Std and Libre Franklin for its internal style. At least one of these should be installed on the system. When you load the package, three font families will be registered for use in your plots:
+To create plots in our style:
 
-* `"Headline 360info"` is for use in headlines, titles and very large annotations (including cases where an annotation is used instead of a title);
-* `"Subhead 360info"` is for use in subtitles and secondary or medium-sized annotations;
-* `"Body 360info"` is for use in small annotations and other plot elements. It has normal and bold variants; use the latter for emphasis in labels and important but small textual plot elements.
+* Add `themes360info::theme_360` to your ggplot2 plot;
+* Add our fonts to other elements, like annotations or additional theme customisations (see the ["Working with fonts" article](articles/articles/working-with-fonts.html));
+* Save the plot, adding a footer with the 360 logo, using `themes360info::save_plot`
 
-`theme_360()` already uses these fonts by default (unless you supply a different `base_family` or override specific theme elements), but if you add text-based labels or annotations outside the theme system (eg. using `geom_label`), you'll need to supply one of these font families:
+## Issues
 
-```{r fontdemo}
-library(ggplot2)
-library(themes360info)
-
-# use this to temporarily switch to either itc franklin gothic or libre franklin
-# register_360fonts("libre", TRUE)
-
-myplot <- 
-  {
-    ggplot(mtcars) +
-    aes(hp, disp) +
-    geom_point() +
-    # this text annotation uses the regular weight body font
-    annotate("text",
-      x = Inf, y = Inf, label = "Regular annotation here!",
-      hjust = "inward", vjust = "inward",
-      family = "Body 360info") +
-    # this text annotation uses the bold weight body font
-    annotate("text",
-      x = Inf, y = -Inf, label = "BOLD annotation here!",
-      hjust = "inward", vjust = "inward",
-      family = "Body 360info", fontface = "bold") +
-    labs(
-      title = "FANCY FONTS",
-      subtitle = "ENHANCE THE APPEARANCE OF PLOTS",
-      caption = "**SOURCE:** aha!<br>Another source here!") +
-    # this adds our fonts, colours and other preferences to the rest of the plot
-    theme_360()
-  }
-
-# save to a temporary file for knitr
-test_path <- knitr::fig_path(".png")
-save_360plot(myplot, test_path, shape = "square")
-knitr::include_graphics(test_path)
-```
-
-### Choosing a preferred font
-
-When you load `themes360info`, one of these (ITC Franklin Gothic Std by default) will be loaded for use. You can switch fonts temporarily by calling `register_360fonts()`, or you can configure the package to prefer one or the other on a per-project or global basis by setting `options("themes360info.franklin") <- "itc"` in your project script or `.Rprofile`. Acceptable options for either function are:
-
-* `"itc"`: Prefer ITC Frnaklin Gothic Std
-* `"libre"`: Prefer Libre Frnaklin
-* `"none"`: do not load fonts with the package (ideal if you plan to manually register fonts yourself)
-
-Registering fonts will make three font families available for use in plots:
+Please feel free to [get in touch](https://github.com/360-info/themes360info/issues/new) if you have problems with the package or would like to suggest new features.
 
 ## Next features
 
-text formatting with `ggtext`:
+* 360 colour paletter helpers
+* Annotation textboxes with `ggtext`:
 
 ```{r textboxdemo}
 # not working yet!

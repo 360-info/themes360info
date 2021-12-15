@@ -9,7 +9,7 @@ save_360plot(
   filename,
   shape = c("square", "phone-landscape", "phone-portrait", "photo-landcape",
     "photo-portrait", "sdtv-landscape", "sdtv-portrait"),
-  retina = 1,
+  retina = 2,
   ...
 )
 }

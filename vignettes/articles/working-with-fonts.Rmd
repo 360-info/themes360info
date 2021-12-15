@@ -1,6 +1,11 @@
 ---
 title: "Working with fonts"
 author: "James Goldie, 360info"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Working with fonts}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include = FALSE}
@@ -78,7 +83,7 @@ Several elements require us to manually specify the font:
 * Labels for our data using `ggplot2::geom_text` or `ggplot2::geom_label`
 * Additional theme customisations beyond `theme_360`, using `ggplot2::theme`
 
-## Specifying 360 fonts in ggplot
+## Using 360 fonts in other parts of the plot
 
 But what do we call the font? It's a bit tricky when some users might have access to the commercially available ITC Franklin Gothic, while others might
 only be able to download the free Libre Franklin.
