@@ -57,14 +57,14 @@ replace_caption <- function(p, caption) {
   } else {
     # non-patchwork plots
 
-    # First, remove existing labels
+    # first, remove existing labels
     # p$labels <- subset(p$labels,
     #   !names(p$labels) %in% c("caption"))
 
     # Then, replace with supplied labels
     p$labels$caption <- caption
   }
-  p
+  return(p)
 }
 
 #' Get a sized and positioned rasterGrob of the 360info logo.
@@ -162,7 +162,7 @@ save_360plot <- function(plot_object, filename,
   # remove the existing plot (or patchwork) caption
   # TODO - removing existing caption isn't working!
   caption <- extract_caption(plot_object)
-  modified_plot <- replace_caption(plot_object, caption)
+  modified_plot <- replace_caption(plot_object, NULL)
 
   # caption = "**SOURCE:** a very long, meandering source whose ultimate provenance is unknown to most of us. We can only<br>speculate!Whose intellectual spleandour do we bask in, blah blah blah blah blah blah..."
 
