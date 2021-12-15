@@ -1,0 +1,71 @@
+---
+title: "360 style guide"
+author: "James Goldie, 360info"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+## Where can I go for more guidance?
+
+This guide isn't intended to be an exhaustive directory of visualisation types. Claus O. Wilke's [Fundamentals of Data Visualization](https://clauswilke.com/dataviz) is filled with great advice on visualising different kinds of data (much of which forms the basis for our own charts), as well as a [comprehensive discussion of different types of visuals](https://clauswilke.com/dataviz/directory-of-visualizations.html).
+
+We focus on particulars for our style here, especially for common chart types.
+
+## Questions to answer
+
+* What can I use to make graphics?
+* Building visual hierarchy
+  - Note on the brand guidelines:
+    - the 360 brand guidelines use bold colours (blue, white, black). But they're designed for text heavy content, like articles, where headings and subheadings are often the only things breaking up the page.
+    - Charts often have more diverse graphical elements, so we need to be more sparing about directing the reader's attention.
+    - We retain the the big, bold headers from the brand guidelines, which are a signature element of our brand that readers will see often.
+* Anatomy of a chart
+  - Titles and subtitles
+    - Titles should be 60 to 100% larger than subtitles.
+    - Because of this, titles should be no more than a few words. Subtitles can be a little longer, but if they're getting into sentence territory, consider moving some of the information into an annotation or the caption.
+    - (example)
+    - Subtitles are only about 10% larger than other text elements. This is because other text elements, where used, convey essential meaning.
+  - Axes
+    - Titles: do I need them?
+    - Labels:
+      - Natural units?
+    - Grid lines: do I need them?
+      - Almost certainly not for categorical data!
+        - (example)
+      - For continuous data, vertical grid lines (for the x axis) _may_ be useful. For example, if you're showing data over several years and a seasonal pattern is important, you might wish to show where the years start or end to help readers establish this
+        - (example)
+      - On the other hand, if your data has only one or two elements where the positioning is important (for example, showing a sudden change in the data), you might consider annotating that part of the chart insyead
+      - Regardless, any grid lines used should be visible but not distracting. Make them thin and a light grey colour
+        - EXCEPTION: thin lines often work poorly on video and can shimmer, distracting the viewer. If we're doing a video product, consider using thicker lines (but be more parsimonious about using them in the first place!)
+  - Colours
+    - (FoDV ch. 4 on uses of colour)
+      - If you're using colours to _categorise_ data, don't use more than 4-6 categories. The more you use, the harder they are to distinguish!
+    - Recommended colour scales
+  - Labels
+    - Directly labelling elements is a great way to 
+
+
+* Specific things to consider for some kinds of charts
+  - Barcharts
+    - Proportional ink
+* Gotchas when getting charts from other people
+  - (refer to data vis no-nos from other sources) 
+  - Too much information
+
+```
+
+```{r setup}
+library(ggplot2)
+library(themes360info)
+```
+
+
+## Anatomy of a basic chart
+
+Let's look at the basic components that appear in many charts:
+
+
