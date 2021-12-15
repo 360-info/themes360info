@@ -12,11 +12,11 @@ theme_360 <- function(base_family = "Body 360info", base_size = 20) {
     plot.title = element_text(
       colour = "#36a7e9",
       family = "Headline 360info",
-      size = rel(2.3), margin = margin(b = base_size * 0.75)
+      size = rel(1.8), margin = margin(b = base_size * 0.5)
     ),
     plot.subtitle =
-      element_text(family = "Subhead 360info", size = rel(1.15),
-        margin = margin(b = base_size * 1.25)),
+      element_text(family = "Subhead 360info", size = rel(0.9),
+        margin = margin(b = base_size * 1.15)),
     plot.caption =
       element_text(hjust = 0, margin = margin(20, 0, 0, 0), size = rel(0.8),
         colour = "#6b767f"),
