@@ -1,5 +1,5 @@
-#' Register specific Libre Franklin font weights for use in 360info plots. This
-#' function runs on package load.
+#' Register specific fonts for use in 360info plots. This
+#' function runs on package load unless it's been disabled in options().
 #'
 #' @param pref The preferred font to use: either `itc` for ITC Franklin Gothic,
 #'   or `libre` for Libre Franklin. If the preferred font is unavailable, the
@@ -17,6 +17,12 @@
 register_360fonts <- function(
   pref = getOption("themes360info.franklin", "itc"),
   reset_fonts = FALSE) {
+
+  # TODO - register typekit fonts with systemfonts::register_font
+  # (but how to know which to use?)
+  try(
+    { load_adobe_fonts() },
+    )
 
   # first check to ensure libre or itc franklin is actually installed
   all_fonts <- systemfonts::system_fonts()
@@ -143,4 +149,70 @@ fontfaces_360fonts <- function() {
     # heavy here
   )
   
+}
+
+#' Find the paths of ITC Franklin fonts synced from Adobe Fonts. Throws an error
+#' if the fonts can't be found.
+load_adobe_fonts <- function() {
+
+  # ~/Library/Application Support/Adobe/CoreSync/plugins/livetype/.r/.[number].otf
+  # C:\Users\<your user name>\AppData\Roaming\Adobe\CoreSync\plugins\livetype\r
+  typekit_dir <- normalizePath(switch(Sys.info()["sysname"],
+    "Darwin" =
+      "~/Library/Application Support/Adobe/CoreSync/plugins/livetype/.r",
+    "Windows" =
+      "~\\..\\AppData\\Roaming\\Adobe\\CoreSync\\plugins\\livetype\\r",
+    "Unix" = rlang::warn(cli::format_warning(c(
+      "x" = "Adobe Fonts unavailable on Linux.")))
+  ))
+
+  # does the directory exist?
+  if (!dir.exists(typekit_dir)) {
+    rlang::warn(cli::format_warning(c("x" = "Adobe Fonts not found.")))
+  }
+
+  # these unique identifiers are used by typekit
+  # (on macOS, the files have a leading period to make them hidden!)
+  franklin_fonts <- c(
+    plain = "39285.otf",
+    bold = "39287.otf",
+    italic = "39286.otf",
+    bolditalic = "39288.otf")
+
+  franklin_paths <-
+    switch(Sys.info()["sysname"],
+      "Darwin" = file.path(typekit_dir, paste0(".", franklin_fonts)),
+      "Windows" = file.path(typekit_dir, franklin_fonts))
+  names(franklin_paths) <- names(franklin_fonts)
+
+  # confirm the fonts are available
+  if (!all(file.exists(franklin_paths))) {
+    rlang::warn(cli::format_warning(c(
+      "x" = paste(
+        "One or more of the ITC Franklin Gothic LT Pro Condensed fonts",
+        "is unsynced."),
+      "i" = paste(
+        "Activate them from",
+        "{.url https://fonts.adobe.com/fonts/itc-franklin-gothic}",
+        "using your Adobe Fonts subscription."
+      ))))
+
+    stop(paste(
+      "One or more of the ITC Franklin Gothic LT Pro Condensed fonts is missing.",
+      "Activate them from https://fonts.adobe.com/fonts/itc-franklin-gothic",
+      "using your Adobe Fonts subscription."
+      ))
+  }
+
+  # register the font
+  register_font(
+    "Franklin 360",
+      plain = file.path(typekit_dir, ".39285.otf"),
+      bold = file.path(typekit_dir, ".39287.otf"),
+      italic = file.path(typekit_dir, ".39286.otf"),
+      bolditalic = file.path(typekit_dir, ".39288.otf"))
+  rlang::inform(cli::format_message(c(
+    "v" = "Using your synced Adobe Fonts typefaces.",
+    "i" = "Use them in your plots with the {.emph \"Franklin 360\"} font family.")))
+  return()
 }
