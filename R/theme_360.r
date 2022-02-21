@@ -5,7 +5,7 @@
 #' @importFrom ggplot2 element_text element_rect margin theme_minimal rel theme
 #'   unit
 #' @export
-theme_360 <- function(base_family = "Body 360info", base_size = 20) {
+theme_360 <- function(base_family = "Body 360info", base_size = 16) {
   theme_minimal(base_family = base_family, base_size = base_size) +
   theme(
     # plot title
