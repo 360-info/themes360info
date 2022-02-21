@@ -103,17 +103,18 @@ get_360logo <- function(width, footer_prop_square) {
 #'
 #' @param plot The ggplot plot to save.
 #' @param filename The path to the file to output.
-#' @param shape What aspect ratio (width:height) should the graphic be? One of:
-#'   - "square" (1:1, the default),
-#'   - "phone-landscape" (16:9),
+#' @param shape What aspect ratio (width:height) should the graphic be?
+#' Either a number specifying the ratio of the height to the width directly, or #' one of:
 #'   - "phone-portrait", (9:16),
-#'   - "photo-landcape" (3:2),
 #'   - "photo-portrait" (2:3),
-#'   - "sdtv-landscape" (4:3),
 #'   - "sdtv-portrait" (3:4)
+#'   - "square" (1:1, the default),
+#'   - "sdtv-landscape" (4:3),
+#'   - "photo-landcape" (3:2),
+#'   - "phone-landscape" (16:9),
 #' @param retina A scaling factor designed to give you a higher (or lower)
 #'   resolution graphic with the same relative size text and other elements.
-#' @param ... Other arguments passed on to `ggplot2::ggsave`.
+#' @param ... Other arguments (currently ignored).
 #' @return The original plot, invisibly (so you can use it in pipes)
 #' @import ggplot2
 #' @importFrom ggtext GeomRichText
@@ -123,14 +124,12 @@ get_360logo <- function(width, footer_prop_square) {
 #' @importFrom patchwork wrap_elements wrap_plots
 #' @importFrom svglite svglite
 #' @importFrom tools file_ext
-#' @importFrom rlang inform
-#' @importFrom cli format_message
+#' @importFrom rlang inform abort
+#' @importFrom cli format_message format_error
 #' @importFrom scales percent
 #' @export
 save_360plot <- function(plot_object, filename,
-  shape = c("square", "phone-landscape", "phone-portrait", "photo-landcape",
-    "photo-portrait", "sdtv-landscape", "sdtv-portrait"),
-  retina = 2, ...) {
+  shape = "square", retina = 2, ...) {
 
   # starting properties
   # we work on the basis of 6" * 66.67 dpi * 1.5 scale = 600px
@@ -138,16 +137,33 @@ save_360plot <- function(plot_object, filename,
   dpi <- 66.6667 * retina
   scale <- 1.5
   
-  # calculate height_ratio
-  shape <- match.arg(shape)
-  height_ratio <- switch(shape,
-    "square"          = 1,
-    "phone-landscape" = 0.5625,
-    "phone-portrait"  = 1.7778,
-    "photo-landcape"  = 0.6667,
-    "photo-portrait"  = 1.5,
-    "sdtv-landscape"  = 0.75,
-    "sdtv-portrait"   = 1.3333)
+  # set height ratio based on shape keyword if it isn't specified directly
+  if (is.character(shape)) {
+    height_ratio <- switch(shape,
+      "square"          = 1,
+      "phone-landscape" = 0.5625,
+      "phone-portrait"  = 1.7778,
+      "photo-landcape"  = 0.6667,
+      "photo-portrait"  = 1.5,
+      "sdtv-landscape"  = 0.75,
+      "sdtv-portrait"   = 1.3333,
+      abort(format_error(cli_bullets(c(
+        "x" = "Allowed keywords for the {.arg shape} argument are:",
+        "*" = "{.arg phone-portrait} (9:16)",
+        "*" = "{.arg photo-portrait} (2:3)",
+        "*" = "{.arg sdtv-portrait} (3:4)",
+        "*" = "{.arg square} (1:1)",
+        "*" = "{.arg sdtv-landscape} (4:3)",
+        "*" = "{.arg photo-landscape} (3:2)",
+        "*" = "{.arg phone-landscape} (16:9)")))))
+  } else if (is.numeric(shape)) {
+    height_ratio <- shape
+  } else {
+    abort(format_error(cli_bullets(c(
+      "x" = paste(
+        "The {.arg shape} argument should either be a keyword, or a number",
+        "specifying the ratio of the height to the width directly.")))))
+  }
 
   # calculate the footer height
   # (footer is designed to be fixed for a given width)
@@ -165,8 +181,6 @@ save_360plot <- function(plot_object, filename,
   # TODO - removing existing caption isn't working!
   caption <- extract_caption(plot_object)
   modified_plot <- replace_caption(plot_object, NULL)
-
-  # caption = "**SOURCE:** a very long, meandering source whose ultimate provenance is unknown to most of us. We can only<br>speculate!Whose intellectual spleandour do we bask in, blah blah blah blah blah blah..."
 
   # prepare the footer panel using the logo and caption
   footer_panel <-

@@ -4,33 +4,27 @@
 \alias{save_360plot}
 \title{Save a graphic with the 360info logo in the lower right corner.}
 \usage{
-save_360plot(
-  plot_object,
-  filename,
-  shape = c("square", "phone-landscape", "phone-portrait", "photo-landcape",
-    "photo-portrait", "sdtv-landscape", "sdtv-portrait"),
-  retina = 2,
-  ...
-)
+save_360plot(plot_object, filename, shape = "square", retina = 2, ...)
 }
 \arguments{
 \item{filename}{The path to the file to output.}
 
-\item{shape}{What aspect ratio (width:height) should the graphic be? One of:
+\item{shape}{What aspect ratio (width:height) should the graphic be?
+Either a number specifying the ratio of the height to the width directly, or #' one of:
 \itemize{
-\item "square" (1:1, the default),
-\item "phone-landscape" (16:9),
 \item "phone-portrait", (9:16),
-\item "photo-landcape" (3:2),
 \item "photo-portrait" (2:3),
-\item "sdtv-landscape" (4:3),
 \item "sdtv-portrait" (3:4)
+\item "square" (1:1, the default),
+\item "sdtv-landscape" (4:3),
+\item "photo-landcape" (3:2),
+\item "phone-landscape" (16:9),
 }}
 
 \item{retina}{A scaling factor designed to give you a higher (or lower)
 resolution graphic with the same relative size text and other elements.}
 
-\item{...}{Other arguments passed on to \code{ggplot2::ggsave}.}
+\item{...}{Other arguments (currently ignored).}
 
 \item{plot}{The ggplot plot to save.}
 }
