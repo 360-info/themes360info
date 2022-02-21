@@ -69,7 +69,7 @@ replace_caption <- function(p, caption) {
 
 #' Get a sized and positioned rasterGrob of the 360info logo.
 #'
-#' @importFrom png readPNG
+#' @importFrom magick image_read_svg
 #' @importFrom grid rasterGrob
 #' @importFrom rlang inform
 #' @importFrom cli format_message
@@ -81,7 +81,7 @@ replace_caption <- function(p, caption) {
 #'   shape sizing intact.
 #' @return A sized and positioned `grid::rasterGrob` object displaying the logo
 get_360logo <- function(width, footer_prop_square) {
-  logo <- system.file("extdata", "360-logo.png", package = "themes360info")
+  logo <- system.file("extdata", "360-logo.svg", package = "themes360info")
 
   # inform(format_message(c(
   #   "Logo diagnostic messages:",
@@ -89,8 +89,10 @@ get_360logo <- function(width, footer_prop_square) {
   #   "i" = paste("Square width: ", width),
   #   "i" = paste("Logo height: ", width * footer_prop_square))))
 
+  # bring the logo in using the magick package
+  # (it antialiases much better than PNG!)
   grid::rasterGrob(
-    png::readPNG(logo),
+    image_read_svg(logo),
     1, 1, just = c("right", "top"),
     # height = width * 0.075,
     height = width * footer_prop_square * 0.6,

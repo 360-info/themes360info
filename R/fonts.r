@@ -23,7 +23,8 @@ register_360fonts <- function(
   franklin_fonts <-
     all_fonts[grepl("Libre|ITC\\s*Franklin", all_fonts$family), ]
   libre_fonts <- all_fonts[grepl("Libre\\s*Franklin", all_fonts$family), ]
-  itc_fonts <- all_fonts[grepl("ITC\\s*Franklin", all_fonts$family), ]
+  # prevent conflict with adobe fonts (which are condensed)
+  itc_fonts <- all_fonts[grepl("ITC\\s*Franklin", all_fonts$name), ]
 
   # diagnostic messages
   specify_diff_font <- paste(
