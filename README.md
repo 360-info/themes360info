@@ -34,26 +34,35 @@ To create plots in our style:
 -   Add our fonts to other elements, like annotations or additional
     theme customisations (see the [“Working with fonts”
     article](articles/articles/working-with-fonts.html));
+-   Get brand colours using `themes360info::colours_360`;
+-   Add text annotations to plots with `themes360info::annotate_360` and
+    other helpers;
 -   Save the plot, adding a footer with the 360 logo, using
-    `themes360info::save_plot`
+    `themes360info::save_360plot`
 
-## Issues
+``` r
+library(ggplot2)
+library(themes360info)
+
+myplot <- ggplot(mtcars) +
+  aes(mpg, disp) +
+  geom_point() +
+  annotate_360_lightblue(x = 25, y = 350,
+    label = "**THIS IS A**<br>really interesting point") +
+  theme_360() +
+  labs(
+    title = "BIG STATEMENT!",
+    subtitle = "BUT ALSO SOME DETAIL",
+    caption = "**CHART:** James Goldie, 360info")
+
+save_360plot(myplot, "man/figures/README-demo.png")
+knitr::include_graphics("man/figures/README-demo.png")
+```
+
+<img src="man/figures/README-demo.png" width="100%" />
+
+## Help
 
 Please feel free to [get in
 touch](https://github.com/360-info/themes360info/issues/new) if you have
 problems with the package or would like to suggest new features.
-
-## Next features
-
--   360 colour paletter helpers
--   Annotation textboxes with `ggtext`:
-
-``` r
-# not working yet!
-# p2 <- p1 +
-#   textbox_360("blue",
-#     x = Inf, y = Inf, hjust = "inward", vjust = "inward", halign = 1,
-#     label = "**THIS IS A PATTERN**<br>As one measure gets bigger, the other gets smaller."
-#   )
-# ggsave("test2.png", p2)
-```

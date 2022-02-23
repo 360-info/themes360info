@@ -94,6 +94,7 @@
 #' @importFrom rlang warn
 #' @importFrom cli format_warning
 #' @importFrom ggplot2 unit geom_label
+#' @importFrom ggtext GeomRichText
 #' @export
 annotate_360 <- function(
   text_colour = c("dark", "light", "blue"),
@@ -111,7 +112,7 @@ annotate_360 <- function(
     box_colour <- colours_360(box_colour)
   }
 
-  annotate(geom = "richtext", colour = text_colour, fill = box_colour,
+  annotate(geom = GeomRichText, colour = text_colour, fill = box_colour,
     label.colour = NA, family = "Body 360info", size = size,
     label.r = unit(0, "cm"), label.padding = unit(0.25, "cm"),
     ...)
