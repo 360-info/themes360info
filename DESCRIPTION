@@ -20,9 +20,11 @@ Imports:
     magrittr,
     methods,
     patchwork,
+    purrr,
     ragg,
     rlang,
     scales,
+    stringr,
     svglite,
     systemfonts
 Suggests:
