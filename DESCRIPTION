@@ -18,9 +18,11 @@ Imports:
     ggtext,
     magick,
     magrittr,
+    methods,
     patchwork,
     ragg,
     rlang,
+    scales,
     svglite,
     systemfonts
 Suggests:

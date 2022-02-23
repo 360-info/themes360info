@@ -4,7 +4,7 @@
   op <- options()
   op.themes360info <- list(
     # one of "itc", "libre" or "none"
-    themes360info.franklin <- "itc"
+    themes360info.franklin.pref <- "itc"
   )
 
   # add any options that haven't been set by the user
@@ -12,8 +12,10 @@
   if(any(toset)) options(op.themes360info[toset])
   
   # register fonts on package load (it can be called manually to re-register!)
-  font_choice <- getOption("themes360info.franklin")
+  font_choice <- getOption("themes360info.franklin.pref")
   if (is.null(font_choice) || font_choice != "none") {
     register_360fonts()
+  } else {
+    options("themes360info.franklin.loaded" = "none")
   }
 }

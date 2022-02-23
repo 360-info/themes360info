@@ -4,9 +4,11 @@
 \alias{save_360plot}
 \title{Save a graphic with the 360info logo in the lower right corner.}
 \usage{
-save_360plot(plot_object, filename, shape = "square", retina = 2, ...)
+save_360plot(plot, filename, shape = "square", retina = 2, ...)
 }
 \arguments{
+\item{plot}{The ggplot plot to save.}
+
 \item{filename}{The path to the file to output.}
 
 \item{shape}{What aspect ratio (width:height) should the graphic be?
@@ -25,8 +27,6 @@ Either a number specifying the ratio of the height to the width directly, or #' 
 resolution graphic with the same relative size text and other elements.}
 
 \item{...}{Other arguments (currently ignored).}
-
-\item{plot}{The ggplot plot to save.}
 }
 \value{
 The original plot, invisibly (so you can use it in pipes)

@@ -4,16 +4,13 @@
 \alias{get_360logo}
 \title{Get a sized and positioned rasterGrob of the 360info logo.}
 \usage{
-get_360logo(width, footer_prop_square)
+get_360logo(width, footer_width_prop)
 }
 \arguments{
 \item{width}{The base physical plot width, as a \code{ggplot2::unit}}
 
-\item{footer_prop}{The proportio nof the plot's height that will be taken
-up the footer.}
-
-\item{retina}{A multiplier for raster resolutions. Keeps relative text and
-shape sizing intact.}
+\item{footer_width_prop}{The proportion of the plot's width that
+will be taken up by the footer's height.}
 }
 \value{
 A sized and positioned \code{grid::rasterGrob} object displaying the logo

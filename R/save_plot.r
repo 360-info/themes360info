@@ -75,19 +75,17 @@ replace_caption <- function(p, caption) {
 #' @importFrom cli format_message
 #' @importFrom scales percent
 #' @param width The base physical plot width, as a `ggplot2::unit`
-#' @param footer_prop The proportio nof the plot's height that will be taken
-#'   up the footer.
-#' @param retina A multiplier for raster resolutions. Keeps relative text and
-#'   shape sizing intact.
+#' @param footer_width_prop The proportion of the plot's width that
+#'   will be taken up by the footer's height.
 #' @return A sized and positioned `grid::rasterGrob` object displaying the logo
-get_360logo <- function(width, footer_prop_square) {
+get_360logo <- function(width, footer_width_prop) {
   logo <- system.file("extdata", "360-logo.svg", package = "themes360info")
 
   # inform(format_message(c(
   #   "Logo diagnostic messages:",
-  #   "i" = paste("Logo proportion of square: ", footer_prop_square),
+  #   "i" = paste("Logo proportion of square: ", footer_width_prop),
   #   "i" = paste("Square width: ", width),
-  #   "i" = paste("Logo height: ", width * footer_prop_square))))
+  #   "i" = paste("Logo height: ", width * footer_width_prop))))
 
   # bring the logo in using the magick package
   # (it antialiases much better than PNG!)
@@ -95,7 +93,7 @@ get_360logo <- function(width, footer_prop_square) {
     image_read_svg(logo),
     1, 1, just = c("right", "top"),
     # height = width * 0.075,
-    height = width * footer_prop_square * 0.6,
+    height = width * footer_width_prop * 0.6,
     interpolate = TRUE)
 }
 
@@ -120,16 +118,14 @@ get_360logo <- function(width, footer_prop_square) {
 #' @importFrom ggtext GeomRichText
 #' @importFrom grid gpar gList grid.lines rasterGrob
 #' @importFrom methods hasArg
-#' @importFrom png readPNG
 #' @importFrom patchwork wrap_elements wrap_plots
 #' @importFrom svglite svglite
 #' @importFrom tools file_ext
 #' @importFrom rlang inform abort
-#' @importFrom cli format_message format_error
+#' @importFrom cli format_message format_error cli_bullets
 #' @importFrom scales percent
 #' @export
-save_360plot <- function(plot_object, filename,
-  shape = "square", retina = 2, ...) {
+save_360plot <- function(plot, filename, shape = "square", retina = 2, ...) {
 
   # starting properties
   # we work on the basis of 6" * 66.67 dpi * 1.5 scale = 600px
@@ -179,8 +175,8 @@ save_360plot <- function(plot_object, filename,
 
   # remove the existing plot (or patchwork) caption
   # TODO - removing existing caption isn't working!
-  caption <- extract_caption(plot_object)
-  modified_plot <- replace_caption(plot_object, NULL)
+  caption <- extract_caption(plot)
+  modified_plot <- replace_caption(plot, NULL)
 
   # prepare the footer panel using the logo and caption
   footer_panel <-
@@ -233,13 +229,13 @@ save_360plot <- function(plot_object, filename,
     scale = scale)
 
   # (add web fonts to args if we're doing svg)
-  # if ((hasArg(device) && device == svglite) || file_ext(filename) == "svg") {
-  #   save_args$web_fonts <- fontfaces_360fonts()
-  # }
+  if (file_ext(filename) == "svg") {
+    save_args$web_fonts <- fontfaces_360fonts()
+  }
 
   # write out
   do.call(ggsave, save_args)
 
   # return the original plot invisibly (for piping)
-  invisible(plot_object)
+  invisible(plot)
 }

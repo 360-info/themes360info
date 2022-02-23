@@ -6,7 +6,7 @@
 function runs on package load.}
 \usage{
 register_360fonts(
-  pref = getOption("themes360info.franklin", "itc"),
+  pref = getOption("themes360info.franklin.pref", "itc"),
   reset_fonts = FALSE
 )
 }
@@ -14,7 +14,7 @@ register_360fonts(
 \item{pref}{The preferred font to use: either \code{itc} for ITC Franklin Gothic,
 or \code{libre} for Libre Franklin. If the preferred font is unavailable, the
 other will be used as a fallback. By default, this argument is read from
-the option "themes360info.franklin", with \code{itc} used if it is unset.}
+the option "themes360info.franklin.pref", with \code{itc} used if it is unset.}
 
 \item{reset_fonts}{If TRUE, reset the font register before registering
 fonts. You may wish to use this if the wrong font was loaded, but it will
