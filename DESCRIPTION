@@ -1,13 +1,33 @@
 Package: themes360info
 Title: Create graphics with ggplot2 that align with 360info style guides
-Description: This package provides ggplot2 helper functions that help users create grphics that align with 360info style guidelines.
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: 
-    person("James", "Goldie", , "james.goldie@360info.org", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0002-5024-6207"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+  person("James", "Goldie",
+    email = "james.goldie@360info.org",
+    role = c("aut", "cre"),
+    comment = c(ORCID = "0000-0002-5024-6207"))
+Description: This package provides ggplot2 helper functions that help users create graphics that align with 360info style guidelines.
+License: CC BY 4.0
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
+Imports: 
+    cli,
+    dplyr,
+    ggplot2,
+    ggtext,
+    magick,
+    magrittr,
+    methods,
+    patchwork,
+    purrr,
+    ragg,
+    rlang,
+    scales,
+    stringr,
+    svglite,
+    systemfonts
+Suggests:
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

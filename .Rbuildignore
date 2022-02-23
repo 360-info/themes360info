@@ -1,0 +1,7 @@
+^README\.Rmd$
+^README\.html$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^vignettes/articles$
+^LICENSE\.md$
