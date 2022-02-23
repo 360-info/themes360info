@@ -85,11 +85,12 @@
 
 #' Add a 360info-themed textbox annotation to the plot.
 #'
-#' @param box_style A string for one of the pre-defined 360info styles. Affects
-#'   the fill and text colour of the box. One of "light", "dark", "blue",
-#'   "glass_light" or "glass_dark".
+#' @param text_colour The colour of the text: "dark", "light" or "blue".
+#' @param box_colour The box fill colour: NA (the default) for no fill, or one
+#'   of the colour names in `colours_360`.
 #' @param ... Other arguments passed on to `ggtext::geom_textbox` or
 #'   `ggplot2::geom_label`.
+#' @param size The size of the text (passed to `ggplot2::annotate`)
 #' @importFrom rlang warn
 #' @importFrom cli format_warning
 #' @importFrom ggplot2 unit geom_label
@@ -116,42 +117,52 @@ annotate_360 <- function(
     ...)
 }
 
+#' @rdname annotate_360
 #' @export
 annotate_360_light <- function(...) {
   annotate_360(text_colour = "dark", box_colour = "lightgrey", ...)
 }
+#' @rdname annotate_360
 #' @export
 annotate_360_dark <- function(...) {
   annotate_360(text_colour = "light", box_colour = "darkgrey", ...)
 }
+#' @rdname annotate_360
 #' @export
 annotate_360_lightblue <- function(...) {
   annotate_360(text_colour = "light", box_colour = "lightblue", ...)
 }
+#' @rdname annotate_360
 #' @export
 annotate_360_darkblue <- function(...) {
   annotate_360(text_colour = "light", box_colour = "darkblue", ...)
 }
+#' @rdname annotate_360
 #' @export
 annotate_360_teal <- function(...) {
   annotate_360(text_colour = "light", box_colour = "teal", ...)
 }
+#' @rdname annotate_360
 #' @export
 annotate_360_green <- function(...) {
   annotate_360(text_colour = "light", box_colour = "green", ...)
 }
+#' @rdname annotate_360
 #' @export
 annotate_360_lightgrey <- function(...) {
   annotate_360(text_colour = "light", box_colour = "lightgrey", ...)
 }
+#' @rdname annotate_360
 #' @export
 annotate_360_darkgrey <- function(...) {
   annotate_360(text_colour = "light", box_colour = "darkgrey", ...)
 }
+#' @rdname annotate_360
 #' @export
 annotate_360_glasslight <- function(...) {
   annotate_360(text_colour = "dark", box_colour = NA_character_, ...)
 }
+#' @rdname annotate_360
 #' @export
 annotate_360_glassdark <- function(...) {
   annotate_360(text_colour = "light", box_colour = NA_character_, ...)
