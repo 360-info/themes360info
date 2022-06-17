@@ -57,7 +57,7 @@ register_360fonts <- function(
           "i" = specify_diff_font)))
       } else {
         options("themes360info.franklin.loaded" = "none")
-        rlang::abort(cli::format_error(c("x" = no_fonts_found)))
+        rlang::warn(cli::format_warning(c("x" = no_fonts_found)))
       }
     },
     "libre" = {
@@ -78,7 +78,7 @@ register_360fonts <- function(
           "i" = specify_diff_font)))
       } else {
         options("themes360info.franklin.loaded" = "none")
-        rlang::abort(cli::format_error(c("x" = no_fonts_found)))
+        rlang::warn(cli::format_warning(c("x" = no_fonts_found)))
       }
     },
     {
