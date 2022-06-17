@@ -73,7 +73,7 @@ The other elements are styled correctly, but not the annotation.
 
 Several elements require us to manually specify the font:
 
-* One-off text annotations using `ggplot2::annotate`
+* One-off text annotations using `ggplot2::annotate_360` or its variants
 * Labels for our data using `ggplot2::geom_text` or `ggplot2::geom_label`
 * Additional theme customisations beyond `theme_360`, using `ggplot2::theme`
 
@@ -87,6 +87,7 @@ Because of this, `themes360info` uses virtual fonts that work regardless of whic
 * `"Headline 360info"`: used for the plot title or _very large_ (essentially title size) annotations
 * `"Subhead 360info"`: used for the plot subtitle or for the first line of longer annotations
 * "Body 360info": used for axis labels, the caption, and for general annotations. This has regular and bold weights (the bold being equivalent to the subhead font) for when you need to mix regular and bold content in an annotation.
+  - Since this is the default font, you can generally get away with just specifying the weight for most theme elements, rather than needing to remember the name.
 
 Note that `"Headline 360info"` and `"Subhead 360info"` are typically used in uppercase only, but the package doesn't do that for you. Wrap your plot `title` and `subtitle` in `toupper` to transform them to uppercase (OR JUST TYPE THEM LOUDLY).
 
@@ -96,11 +97,10 @@ Let's try it out:
 
 p4 <-
   p1 +
-  annotate("text",
+  annotate_360_glasslight(
     label = "Notice anything different?",
     x = 5, y = 2500,
-    hjust = "inward", vjust = "inward",
-    family = "Body 360info") +
+    hjust = "inward", vjust = "inward") +
   theme_360()
 
 test_path <- knitr::fig_path(".png")
@@ -108,19 +108,19 @@ save_360plot(p4, test_path, shape = "square", retina = 2)
 knitr::include_graphics(test_path)
 ```
 
-If we load the `ggtext` package, we can even use the `richtext` geom to mix and match bold and regular text, as we can in the caption:
+Because these annotations are also powered by `ggtext`, we can mix and match bold and regular text, as we can in the caption, or even change colours part way through:
 
 ```{r labeldemomixed}
-library(ggtext)
 
 p5 <-
   p1 +
-  annotate("richtext",
-    label = "**BIG PATTERN.**<br>Notice anything different?",
+  annotate_360_glasslight("richtext",
+    label = paste(
+      "**BIG PATTERN.**",
+      "This annotation is <span style = 'color:##f71130;'>**hot**",
+      sep = "<br>"),
     x = 5, y = 5000,
-    hjust = "inward", vjust = "inward",
-    family = "Body 360info",
-    label.colour = NA, fill = NA) +
+    hjust = "inward", vjust = "inward") +
   theme_360()
 
 test_path <- knitr::fig_path(".png")
@@ -134,7 +134,7 @@ knitr::include_graphics(test_path)
 
 By default, the first preference is ITC Franklin Gothic, with Libre Franklin being the fallback.
 
-To specify your preference, you can set `options("themes360info.franklin")` to either `"itc"` or `"libre"`. You can set this preference manually in a script, but it may be preferable to set it in an `.Rprofile` file in your home directory so that other users can set their own preferences.
+To specify your preference, you can set `options("themes360info.franklin.pref")` to either `"itc"` or `"libre"`. You can set this preference manually in a script, but it may be preferable to set it in an `.Rprofile` file in your home directory so that other users can set their own preferences.
 
 If you need to mix and match fonts in a single session, as we do next, you can also manually call `register_360fonts` to switch:
 
