@@ -43,20 +43,20 @@ register_360fonts <- function(
       # use itc, falling back to libre or aborting if neither are found
       if (nrow(itc_fonts) > 1) {
         family <- itc_fonts
-        options("themes360info.franklin.loaded" = "itc")
+        loaded_font <- "itc"
         rlang::inform(cli::format_message(c(
             "v" = "Using preferred font, ITC Franklin Gothic.",
             "i" = specify_diff_font)))
       } else if (nrow(libre_fonts) > 1) {
         family <- libre_fonts
-        options("themes360info.franklin.loaded" = "libre")
+        loaded_font <- "libre"
         rlang::warn(cli::format_warning(c(
           "!" = paste(
             "Preferred font, ITC Franklin Gothic, not found.",
             "Using Libre Franklin as a fallback."),
           "i" = specify_diff_font)))
       } else {
-        options("themes360info.franklin.loaded" = "none")
+        loaded_font <- "none"
         rlang::warn(cli::format_warning(c("x" = no_fonts_found)))
       }
     },
@@ -64,20 +64,20 @@ register_360fonts <- function(
       # use libre, falling back to itc or aborting if neither are found
       if (nrow(libre_fonts) > 1) {
         family <- libre_fonts
-        options("themes360info.franklin.loaded" = "libre")
+        loaded_font <- "libre"
         rlang::inform(cli::format_message(c(
             "v" = "Using preferred font, Libre Franklin.",
             "i" = specify_diff_font)))
       } else if (nrow(itc_fonts) > 1) {
         family <- itc_fonts
-        options("themes360info.franklin.loaded" = "itc")
+        loaded_font <- "itc"
         rlang::warn(cli::format_warning(c(
           "!" = paste(
             "Preferred font, Libre Franklin, not found.",
             "Using ITC Franklin Gothic as a fallback."),
           "i" = specify_diff_font)))
       } else {
-        options("themes360info.franklin.loaded" = "none")
+        loaded_font <- "none"
         rlang::warn(cli::format_warning(c("x" = no_fonts_found)))
       }
     },
@@ -125,6 +125,8 @@ register_360fonts <- function(
     name = "Body 360info",
     family = body$family,
     weight = c(body$weight, subhead$weight))
+
+  options("themes360info.franklin.loaded" = loaded_font)
 
   # TODO - switch font face declaration state?
 
