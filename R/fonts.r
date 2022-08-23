@@ -142,7 +142,7 @@ register_360fonts <- function(
 #' @importFrom rlang warn
 #' @importFrom cli format_warning cli_bullets
 fontfaces_360fonts <- function() {
-  
+
   loaded_font_name <- getOption("themes360info.franklin.loaded")
   if (loaded_font_name != "libre") {
     warn(format_warning(cli_bullets(c(
@@ -151,7 +151,9 @@ fontfaces_360fonts <- function() {
     ))))
   }
   loaded_font_spec <- switch(loaded_font_name,
-    "libre" = list("https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,400;0,700;0,900;1,400&display=swap"),
+    "libre" = list(paste0(
+      "https://fonts.googleapis.com/css2?family=Libre+Franklin:",
+      "ital,wght@0,400;0,700;0,900;1,400&display=swap")),
     list())
 
   return(loaded_font_spec)
