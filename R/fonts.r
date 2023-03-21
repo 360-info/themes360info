@@ -98,17 +98,17 @@ register_360fonts <- function(
   # TODO - eliminate pipes here (they mess up package docs in .onLoad)
   headline <-
     family %>%
-    dplyr::filter(!.data$italic) %>%
+    dplyr::filter(.data$italic == FALSE) %>%
     dplyr::arrange(dplyr::desc(.data$weight)) %>%
     dplyr::slice(1)
   subhead <-
     family %>%
-    dplyr::filter(!.data$italic, .data$weight < "ultrabold") %>%
+    dplyr::filter(.data$italic  == FALSE, .data$weight < "ultrabold") %>%
     dplyr::arrange(dplyr::desc(.data$weight)) %>%
     dplyr::slice(1)
   body <-
     family %>%
-    dplyr::filter(!.data$italic, .data$weight == "normal") %>%
+    dplyr::filter(.data$italic == FALSE, .data$weight == "normal") %>%
     dplyr::arrange(dplyr::desc(.data$weight)) %>%
     dplyr::slice(1)
 
