@@ -1,6 +1,6 @@
 Package: themes360info
 Title: Create graphics with ggplot2 that align with 360info style guides
-Version: 0.0.2
+Version: 0.0.3
 Authors@R: 
   person("James", "Goldie",
     email = "james.goldie@360info.org",

@@ -98,19 +98,19 @@ register_360fonts <- function(
   # TODO - eliminate pipes here (they mess up package docs in .onLoad)
   headline <-
     family %>%
-    filter(!.data$italic) %>%
-    arrange(desc(.data$weight)) %>%
-    slice(1)
+    dplyr::filter(!.data$italic) %>%
+    dplyr::arrange(dplyr::desc(.data$weight)) %>%
+    dplyr::slice(1)
   subhead <-
     family %>%
-    filter(!.data$italic, .data$weight < "ultrabold") %>%
-    arrange(desc(.data$weight)) %>%
-    slice(1)
+    dplyr::filter(!.data$italic, .data$weight < "ultrabold") %>%
+    dplyr::arrange(dplyr::desc(.data$weight)) %>%
+    dplyr::slice(1)
   body <-
     family %>%
-    filter(!.data$italic, .data$weight == "normal") %>%
-    arrange(desc(.data$weight)) %>%
-    slice(1)
+    dplyr::filter(!.data$italic, .data$weight == "normal") %>%
+    dplyr::arrange(dplyr::desc(.data$weight)) %>%
+    dplyr::slice(1)
 
   # register variants of the selected font
   systemfonts::register_variant(
