@@ -1,6 +1,10 @@
 # themes360info 0.0.3
 
-* Correct problems with dplyr namespacing in package setup.
+* Move to using Libre Franklin as the only supported theme font
+  - Libre Franklin is now distributed with the package
+  - Package options are now ignored
+  - You can continue to use "Headline 360info", "Subhead 360info" and "Body 360info" as the font families in graphics
+* Remove dplyr as a dependency
 
 # 0.0.2
 
