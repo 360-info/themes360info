@@ -9,18 +9,13 @@ guides
 <!-- badges: start -->
 
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+experimental](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 <!-- badges: end -->
 
 # Installation
 
-First, download and install either the [Libre Franklin
-fonts](https://fonts.google.com/specimen/Libre+Franklin) or the [ITC
-Franklin Gothic
-fonts](https://www.myfonts.com/fonts/itc/franklin-gothic/) and install
-them.
-
-Then install the package with:
+Install the package from GitHub with the `remotes` or `devtools`
+packages:
 
 ``` r
 remotes::install_github("360-info/themes360info")
@@ -30,15 +25,15 @@ remotes::install_github("360-info/themes360info")
 
 To create plots in our style:
 
--   Add `themes360info::theme_360` to your ggplot2 plot;
--   Add our fonts to other elements, like annotations or additional
-    theme customisations (see the [“Working with fonts”
-    article](articles/articles/working-with-fonts.html));
--   Get brand colours using `themes360info::colours_360`;
--   Add text annotations to plots with `themes360info::annotate_360` and
-    other helpers;
--   Save the plot, adding a footer with the 360 logo, using
-    `themes360info::save_360plot`
+- Add `themes360info::theme_360` to your ggplot2 plot;
+- Add our fonts to other elements, like annotations or additional theme
+  customisations (see the [“Working with fonts”
+  article](articles/articles/working-with-fonts.html));
+- Get brand colours using `themes360info::colours_360`;
+- Add text annotations to plots with `themes360info::annotate_360` and
+  other helpers;
+- Save the plot, adding a footer with the 360 logo, using
+  `themes360info::save_360plot`
 
 ``` r
 library(ggplot2)
@@ -51,8 +46,8 @@ myplot <- ggplot(mtcars) +
     label = "**THIS IS A**<br>really interesting point") +
   theme_360() +
   labs(
-    title = "BIG STATEMENT!",
-    subtitle = "BUT ALSO SOME DETAIL",
+    title = "BIG STATEMENT",
+    subtitle = "But also some detail with a **key phrase** bolded",
     caption = "**CHART:** James Goldie, 360info")
 
 save_360plot(myplot, "man/figures/README-demo.png")
