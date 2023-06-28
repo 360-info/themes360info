@@ -99,22 +99,4 @@ save_360plot(p4, test_path, shape = "square", retina = 2)
 knitr::include_graphics(test_path)
 ```
 
-Because these annotations are also powered by `ggtext`, we can mix and match bold and regular text, as we can in the caption, or even change colours part way through:
-
-```{r labeldemomixed}
-
-p5 <-
-  p1 +
-  annotate_360_glasslight("richtext",
-    label = paste(
-      "**BIG PATTERN.**",
-      "This annotation is <span style = 'color:##f71130;'>**hot**",
-      sep = "<br>"),
-    x = 5, y = 5000,
-    hjust = "inward", vjust = "inward") +
-  theme_360()
-
-test_path <- knitr::fig_path(".png")
-save_360plot(p5, test_path, shape = "square", retina = 2)
-knitr::include_graphics(test_path)
-```
+Because these annotations are also powered by `ggtext`, we can mix and match bold and regular text, as we can in the caption, or even change colours part way through.

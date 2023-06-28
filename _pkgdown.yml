@@ -2,7 +2,7 @@ url: ~
 template:
   bootstrap: 5
   bslib:
-    navbar:
-      bg: dark
-    base_font: {google: "Libre Franklin"}
-    heading_font: {google: "Libre Franklin"}
+    base_font: {google: "Public Sans"}
+    heading_font: {google: "Public Sans"}
+  navbar:
+    bg: dark
