@@ -12,12 +12,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-360's style guide gives a few acceptable alternatives:
-
-* [ITC Franklin Gothic](https://www.myfonts.com/fonts/itc/franklin-gothic)
-* [Libre Franklin](https://fonts.google.com/specimen/Libre+Franklin)
-
-You'll need to install one (or both) of these fonts yourself, but once you do, the `themes360info` package takes care of using them when you make plots.
+We bundle [Public Sans](https://fonts.google.com/specimen/Public+Sans) with the package. The `themes360info` package takes care of using them when you make plots.
 
 For example, here's a very simple ggplot in the default style:
 
@@ -31,7 +26,7 @@ p1 <-
   geom_point() +
   labs(
     title = "BIG TITLE",
-    subtitle = "MORE NUANCED MESSAGE HERE",
+    subtitle = "More nuanced message here",
     caption = "**SOURCE:** some important place")
 
 test_path <- knitr::fig_path(".png")
@@ -49,7 +44,7 @@ save_360plot(p2, test_path, shape = "square", retina = 2)
 knitr::include_graphics(test_path)
 ```
 
-(You might also notice that the caption now interprets the asterisks as **bold text**. Some limited [Markdown](https://www.markdownguide.org/basic-syntax/#emphasis) or HTML formatting is available in the caption for this purpose! You can also use `<br>` to break a long caption across two lines.)
+(You might also notice that the caption now interprets the asterisks as **bold text**. Some limited [Markdown](https://www.markdownguide.org/basic-syntax/#emphasis) or HTML formatting is available in the caption for this purpose! You should also use `<br>` instead of `\n` to break a long caption or subtitle across two or more lines.)
 
 ## Styling annotations and labels
 
@@ -79,17 +74,13 @@ Several elements require us to manually specify the font:
 
 ## Using 360 fonts in other parts of the plot
 
-But what do we call the font? It's a bit tricky when some users might have access to the commercially available ITC Franklin Gothic, while others might
-only be able to download the free Libre Franklin.
-
-Because of this, `themes360info` uses virtual fonts that work regardless of which font you actually have installed. They are:
+Because we occasionally update our branding, the `themes360info` package uses virtual fonts that work regardless of which actual font we've bundled with the package. Use:
 
 * `"Headline 360info"`: used for the plot title or _very large_ (essentially title size) annotations
-* `"Subhead 360info"`: used for the plot subtitle or for the first line of longer annotations
-* "Body 360info": used for axis labels, the caption, and for general annotations. This has regular and bold weights (the bold being equivalent to the subhead font) for when you need to mix regular and bold content in an annotation.
+* "Body 360info": used for everything else. This has regular and bold weights (the bold being equivalent to the subhead font) for when you need to mix regular and bold content in an annotation.
   - Since this is the default font, you can generally get away with just specifying the weight for most theme elements, rather than needing to remember the name.
 
-Note that `"Headline 360info"` and `"Subhead 360info"` are typically used in uppercase only, but the package doesn't do that for you. Wrap your plot `title` and `subtitle` in `toupper` to transform them to uppercase (OR JUST TYPE THEM LOUDLY).
+Note that `"Headline 360info"` is typically used in uppercase only, but the package doesn't do that for you. Wrap your plot `title` and `subtitle` in `toupper` to transform them to uppercase (OR JUST TYPE THEM LOUDLY).
 
 Let's try it out:
 
@@ -126,36 +117,4 @@ p5 <-
 test_path <- knitr::fig_path(".png")
 save_360plot(p5, test_path, shape = "square", retina = 2)
 knitr::include_graphics(test_path)
-```
-
-## Okay, but which font will it _actually_ be?
-
-`themes360info` will attempt to register the font you specify as a preference when it loads (using `library(themes360info)`), falling back to the other if your preference isn't available. (If neither is available, it will warn you that the theme may misbehave.)
-
-By default, the first preference is ITC Franklin Gothic, with Libre Franklin being the fallback.
-
-To specify your preference, you can set `options("themes360info.franklin.pref")` to either `"itc"` or `"libre"`. You can set this preference manually in a script, but it may be preferable to set it in an `.Rprofile` file in your home directory so that other users can set their own preferences.
-
-If you need to mix and match fonts in a single session, as we do next, you can also manually call `register_360fonts` to switch:
-
-::: {.alert .alert-warning}
-For most users, specifying a preference using `options` is enough! The example below is only really useful for package developers.
-:::
-
-```{r fontswitchlibre}
-register_360fonts("libre", reset = TRUE)
-path1 <- knitr::fig_path(".png")
-save_360plot(
-  p2 + labs(title = "FIRST WITH LIBRE"),
-  path1, shape = "square", retina = 2)
-knitr::include_graphics(path1)
-```
-
-```{r fontswitchitc}
-register_360fonts("itc", reset = TRUE)
-path2 <- knitr::fig_path(".png")
-save_360plot(
-  p2 + labs(title = "THEN WITH ITC"),
-  path2, shape = "square", retina = 2)
-knitr::include_graphics(path2)
 ```
