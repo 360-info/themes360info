@@ -1,10 +1,11 @@
 # themes360info 0.0.3
 
-* Move to using Libre Franklin as the only supported theme font
-  - Libre Franklin is now distributed with the package
+* Move to using Public Sans as the only supported theme font
+  - Public Sans is now distributed with the package
   - Package options are now ignored
-  - You can continue to use "Headline 360info", "Subhead 360info" and "Body 360info" as the font families in graphics
-* Remove dplyr as a dependency
+  - You can continue to use "Headline 360info" and "Body 360info" as the font families in graphics
+  - "Subhead 360info" is also left in for backwards compatibility purposes, but the theme itself no longer uses it (we now use the Body font for subheads, allowing us to bold key phrases)
+* Remove dplyr, magrittr and methods as dependencies
 
 # 0.0.2
 
