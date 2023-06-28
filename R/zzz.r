@@ -1,21 +1,25 @@
+#' On package startup, register the ttf fils in inst/extdata
+#' as "Headline 360info", "Subhead 360info" and "Body 360info"
+#' 
+#' (Note that the subhead font is no longer used by the theme
+#' but is left for backwards-compatibility purposes.)
 .onLoad <- function(libname, pkgname) {
-
-  # option: preferred font?
-  op <- options()
-  op.themes360info <- list(
-    # one of "itc", "libre" or "none"
-    themes360info.franklin.pref <- "itc"
-  )
-
-  # add any options that haven't been set by the user
-  toset <- !(names(op.themes360info) %in% names(op))
-  if (any(toset)) options(op.themes360info[toset])
-
-  # register fonts on package load (it can be called manually to re-register!)
-  font_choice <- getOption("themes360info.franklin.pref")
-  if (is.null(font_choice) || font_choice != "none") {
-    register_360fonts()
-  } else {
-    options("themes360info.franklin.loaded" = "none")
-  }
+  systemfonts::register_font(
+    name = "Headline 360info",
+    plain = system.file("extdata", "PublicSans-Black.ttf",
+      package = "themes360info"))
+  systemfonts::register_font(
+    name = "Subhead 360info",
+    plain = system.file("extdata", "PublicSans-Bold.ttf",
+      package = "themes360info"))
+  systemfonts::register_font(
+    name = "Body 360info",
+    plain = system.file("extdata", "PublicSans-Regular.ttf",
+      package = "themes360info"), 
+    italic = system.file("extdata", "PublicSans-Italic.ttf",
+      package = "themes360info"),
+    bold = system.file("extdata", "PublicSans-Bold.ttf",
+      package = "themes360info"),
+    bolditalic = system.file("extdata", "PublicSans-BoldItalic.ttf",
+      package = "themes360info"))
 }

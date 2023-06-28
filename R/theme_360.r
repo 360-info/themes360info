@@ -10,23 +10,21 @@ theme_360 <- function(base_family = "Body 360info", base_size = 16) {
   theme(
     # plot title
     plot.title = element_text(
-      colour = "#36a7e9",
+      colour = "black",
       family = "Headline 360info",
       size = rel(1.8), margin = margin(b = base_size * 0.5)
     ),
-    plot.subtitle =
-      element_text(family = "Subhead 360info", size = rel(0.9),
-        margin = margin(b = base_size * 1.15)),
-    plot.caption =
-      element_text(hjust = 0, margin = margin(20, 0, 0, 0), size = rel(0.8),
-        colour = "#6b767f"),
+    plot.subtitle = element_text(
+      size = rel(0.9),
+      margin = margin(b = base_size * 1.15)),
+    plot.caption = element_text(
+      hjust = 0,
+      margin = margin(20, 0, 0, 0), size = rel(0.8),
+      colour = "#6b767f"),
     plot.title.position = "plot",
     plot.caption.position = "plot",
     # axes
     axis.title = element_text(face = "bold"),
-    # panel grid
-    # panel.grid = element_line(alpha("#6b767f", 0.5), size = rel(0.75)),
-    # panel.grid.minor = element_line(size = rel(0.375)),
     # legends
     legend.title = element_text(face = "bold"),
     # plot frame and background

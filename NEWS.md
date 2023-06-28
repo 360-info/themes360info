@@ -1,6 +1,13 @@
 # themes360info 0.0.3
 
-* Correct problems with dplyr namespacing in package setup.
+* Move to using Public Sans as the only supported theme font
+  - Public Sans is now distributed with the package
+  - Package options are now ignored
+  - You can continue to use "Headline 360info" and "Body 360info" as the font families in graphics
+  - "Subhead 360info" is also left in for backwards compatibility purposes, but the theme itself no longer uses it (we now use the Body font for subheads, allowing us to bold key phrases)
+* Remove dplyr, magrittr and methods as dependencies
+* Added rsvg as a direct dependency (technically it's a dependency of magick and is listed there, but for some reason it isn't always installing properly)
+* Plot headers are now black, rather than 360 blue
 
 # 0.0.2
 
