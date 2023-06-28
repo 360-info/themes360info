@@ -117,7 +117,6 @@ get_360logo <- function(width, footer_width_prop) {
 #' @import ggplot2
 #' @importFrom ggtext GeomRichText
 #' @importFrom grid gpar gList grid.lines rasterGrob
-#' @importFrom methods hasArg
 #' @importFrom patchwork wrap_elements wrap_plots
 #' @importFrom svglite svglite
 #' @importFrom tools file_ext
@@ -200,13 +199,6 @@ save_360plot <- function(plot, filename, shape = "square", retina = 2, ...) {
   #   gp = gpar(col = themes360info::pal_360[["grey"]], lwd = 2))
   grey_line <- grid.lines(y = c(0.5, 0.5), draw = FALSE,
     gp = gpar(col = "grey", lwd = 2))
-  
-  # inform(format_message(c(
-  #   "Footer sizing diagnostic messages:",
-  #   "i" = paste("Footer proportion of square: ", percent(footer_prop_square)),
-  #   "i" = paste("Height ratio: ", percent(height_ratio)),
-  #   "i" = paste("Footer proportion: ", percent(footer_prop)),
-  #   "i" = paste("Footer height (?): ", footer_prop * width))))
 
   # composite the plot, line and footer
   patch <- wrap_plots(
