@@ -3,6 +3,8 @@
 #' 
 #' (Note that the subhead font is no longer used by the theme
 #' but is left for backwards-compatibility purposes.)
+#' @param libname a character string giving the library directory where the package defining the namespace was found.
+#' @param pkgname	a character string giving the name of the package.
 .onLoad <- function(libname, pkgname) {
   systemfonts::register_font(
     name = "Headline 360info",
