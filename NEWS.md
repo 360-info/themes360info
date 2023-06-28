@@ -6,6 +6,7 @@
   - You can continue to use "Headline 360info" and "Body 360info" as the font families in graphics
   - "Subhead 360info" is also left in for backwards compatibility purposes, but the theme itself no longer uses it (we now use the Body font for subheads, allowing us to bold key phrases)
 * Remove dplyr, magrittr and methods as dependencies
+* Plot headers are now black, rather than 360 blue
 
 # 0.0.2
 
