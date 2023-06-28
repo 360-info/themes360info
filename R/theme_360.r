@@ -4,6 +4,7 @@
 #' @param base_size Base font size, given in pts.
 #' @importFrom ggplot2 element_text element_rect margin theme_minimal rel theme
 #'   unit
+#' @importFrom ggtext element_markdown
 #' @export
 theme_360 <- function(base_family = "Body 360info", base_size = 16) {
   theme_minimal(base_family = base_family, base_size = base_size) +
@@ -12,9 +13,10 @@ theme_360 <- function(base_family = "Body 360info", base_size = 16) {
     plot.title = element_text(
       colour = "black",
       family = "Headline 360info",
-      size = rel(1.8), margin = margin(b = base_size * 0.5)
+      size = rel(1.8),
+      margin = margin(t = base_size * 0.5, b = base_size * 0.5)
     ),
-    plot.subtitle = element_text(
+    plot.subtitle = ggtext::element_markdown(
       size = rel(0.9),
       margin = margin(b = base_size * 1.15)),
     plot.caption = element_text(
