@@ -20,6 +20,7 @@ Imports:
     purrr,
     ragg,
     rlang,
+    rsvg,
     scales,
     stringr,
     svglite,
