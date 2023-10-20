@@ -1,4 +1,9 @@
-# themes360info 0.0.3
+# themes360info 0.1.0
+
+* Move to using Roboto Condensed as the only supported theme font
+  - Roboto Condensed is now distributed with the package
+
+# 0.0.3
 
 * Move to using Public Sans as the only supported theme font
   - Public Sans is now distributed with the package

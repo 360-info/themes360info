@@ -8,20 +8,20 @@
 .onLoad <- function(libname, pkgname) {
   systemfonts::register_font(
     name = "Headline 360info",
-    plain = system.file("extdata", "PublicSans-Black.ttf",
+    plain = system.file("extdata", "RobotoCondensed-ExtraBold.ttf",
       package = "themes360info"))
   systemfonts::register_font(
     name = "Subhead 360info",
-    plain = system.file("extdata", "PublicSans-Bold.ttf",
+    plain = system.file("extdata", "RobotoCondensed-Bold.ttf",
       package = "themes360info"))
   systemfonts::register_font(
     name = "Body 360info",
-    plain = system.file("extdata", "PublicSans-Regular.ttf",
+    plain = system.file("extdata", "RobotoCondensed-Light.ttf",
       package = "themes360info"), 
-    italic = system.file("extdata", "PublicSans-Italic.ttf",
+    italic = system.file("extdata", "RobotoCondensed-LightItalic.ttf",
       package = "themes360info"),
-    bold = system.file("extdata", "PublicSans-Bold.ttf",
+    bold = system.file("extdata", "RobotoCondensed-Bold.ttf",
       package = "themes360info"),
-    bolditalic = system.file("extdata", "PublicSans-BoldItalic.ttf",
+    bolditalic = system.file("extdata", "RobotoCondensed-BoldItalic.ttf",
       package = "themes360info"))
 }

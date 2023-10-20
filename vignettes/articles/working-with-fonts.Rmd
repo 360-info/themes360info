@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-We bundle [Public Sans](https://fonts.google.com/specimen/Public+Sans) with the package. The `themes360info` package takes care of using them when you make plots.
+We bundle [Roboto Condensed](https://fonts.google.com/specimen/Roboto+Condensed) with the package. The `themes360info` package takes care of using them when you make plots.
 
 For example, here's a very simple ggplot in the default style:
 
